@@ -3,7 +3,7 @@ import '../css/style.css';
 const container = document.getElementById('feed-container');
 
 // URL вашего бекенда на Render (замените на реальный после деплоя)
-const API_URL = 'https://ваш-проект.onrender.com/news'; 
+const API_URL = 'https://webworkers-serviceworkers-backend.onrender.com'; 
 // Для локальной разработки:
 // const API_URL = 'http://localhost:7070/news';
 
