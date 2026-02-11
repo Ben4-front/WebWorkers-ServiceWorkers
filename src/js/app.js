@@ -2,10 +2,7 @@ import '../css/style.css';
 
 const container = document.getElementById('feed-container');
 
-// URL вашего бекенда на Render (замените на реальный после деплоя)
-const API_URL = 'https://webworkers-serviceworkers-backend.onrender.com'; 
-// Для локальной разработки:
-// const API_URL = 'http://localhost:7070/news';
+const API_URL = 'https://webworkers-serviceworkers-backend.onrender.com/news';
 
 function renderSkeleton() {
     let html = '';
@@ -54,19 +51,20 @@ async function init() {
 
     try {
         const response = await fetch(API_URL);
+        
         if (!response.ok) throw new Error('Network response was not ok');
         
         const json = await response.json();
         renderData(json.data);
     } catch (error) {
         console.error('Fetch error:', error);
-        renderError();
+        renderError(); 
     }
 }
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('./service-worker.js')
             .then(registration => {
                 console.log('SW registered: ', registration);
             }).catch(registrationError => {
